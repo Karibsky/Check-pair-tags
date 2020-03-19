@@ -5,20 +5,20 @@ namespace TestTask
 {
     class CheckExpression
     {
-        public static bool IsCorrect(string expression, Brackets brackets)
+        public static bool IsCorrect(string expression)
         {
-            var result = new Stack<char>();
-            var pairBrackets = brackets.bracketPairs;
-
+            var result = new Stack<string>();
+            var brackets = Configuration.GetWordsDictionary();
+        
             try
             {
-                foreach(var e in expression)
+                foreach(var e in expression.Split())
                 {
-                    if (pairBrackets.Keys.Contains(e))
+                    if (brackets.Keys.Contains(e))
                         result.Push(e);
                     else
-                        if (pairBrackets.Values.Contains(e))
-                            if (e == pairBrackets[result.First()])
+                        if (brackets.Values.Contains(e))
+                            if (e == brackets[result.First()])
                                 result.Pop();
                             else
                                 return false;

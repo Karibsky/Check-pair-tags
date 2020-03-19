@@ -5,25 +5,44 @@ namespace TestTask
 {
     class GenerateResult
     {
-        public static void GetResult(string filename)
+        public static async void OpenFile(string path)
         {
-            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
+            if (!string.IsNullOrEmpty(path))
+            {
+                try
+                {
+                    using (StreamReader sr = new StreamReader(path, true))
+                    {
+                        var line = "";
+                        while ((line = await sr.ReadLineAsync()) != null)
+                            PrintResult(line);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("The process failed {0}", ex.ToString());
+                }
+            }
+        }
 
+        private static void PrintResult(string expression)
+        {
+            var result = string.Format("Expression: {0} Result: {1}", expression, CheckExpression.IsCorrect(expression));
+            Console.WriteLine(result);
+            WriteToFile(result);
+        }
+
+        private static async void WriteToFile(string result)
+        {
             try
             {
-                using (StreamReader sr = new StreamReader(path))
-                    while (sr.Peek() > 0)
-                    {
-                        var expression = sr.ReadToEnd();
-                        Console.WriteLine(expression + " " + CheckExpression.IsCorrect(expression, new Brackets()));
-                    }
+                using (StreamWriter sw = new StreamWriter(Configuration.GetOutputPath(), true))
+                    await sw.WriteLineAsync(result);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("The process failed {0}", ex.ToString());
             }
-
-            Console.ReadKey();
         }
 
     }

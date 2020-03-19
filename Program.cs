@@ -1,10 +1,14 @@
-﻿namespace TestTask
+﻿using System;
+using System.Configuration;
+
+namespace TestTask
 {
     class Program
     {
         static void Main(string[] args)
         {
-            GenerateResult.GetResult("test.txt");
+            GenerateResult.OpenFile(Configuration.GetInputPath());
+            Console.ReadKey();
         }
     }
 }
