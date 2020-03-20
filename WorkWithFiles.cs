@@ -3,18 +3,19 @@ using System.IO;
 
 namespace TestTask
 {
-    class WorkWithFiles
+    class WorkWithFiles : ISource
     {
-        public static async void OpenFile(string path)
+        public async void ReadFromSource(string path)
         {
             if (!string.IsNullOrEmpty(path))
             {
                 try
                 {
+                    GenerateResult generateResult = new GenerateResult();
                     using (StreamReader sr = new StreamReader(path, true))
                     {
                         while (sr.Peek() > 0)
-                            GenerateResult.PrintResult(await sr.ReadToEndAsync());
+                            generateResult.PrintResult(await sr.ReadToEndAsync());
                     }
                 }
                 catch (Exception ex)
@@ -24,7 +25,7 @@ namespace TestTask
             }
         }
 
-        public static async void WriteToFile(string result)
+        public async void WriteToSource(string result)
         {
             try
             {

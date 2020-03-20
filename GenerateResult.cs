@@ -2,13 +2,14 @@
 
 namespace TestTask
 {
-    class GenerateResult
+    class GenerateResult : IResult
     {
-        public static void PrintResult(string expression)
+        public void PrintResult(string expression)
         {
-            var result = string.Format("Expression: {0} Result: {1}", expression, CheckExpression.IsCorrect(expression));
+            var result = string.Format("Expression: \n{0} \nResult: {1}", expression, CheckExpression.IsCorrect(expression));
             Console.WriteLine(result);
-            WorkWithFiles.WriteToFile(result);
+            WorkWithFiles workWithFiles = new WorkWithFiles();
+            workWithFiles.WriteToSource(result);
         }
     }
 }

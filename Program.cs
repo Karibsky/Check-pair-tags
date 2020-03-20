@@ -6,7 +6,8 @@ namespace TestTask
     {
         static void Main(string[] args)
         {
-            WorkWithFiles.OpenFile(Configuration.GetInputPath());
+            WorkWithFiles workWithFiles = new WorkWithFiles();
+            workWithFiles.ReadFromSource(Configuration.GetInputPath());
             Console.ReadKey();
         }
     }
