@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace TestTask
 {
@@ -7,19 +8,19 @@ namespace TestTask
     {
         public static bool IsCorrect(string expression)
         {
-            var result = new Stack<string>();
+            var stack = new Stack<string>();
             var brackets = Configuration.GetWordsDictionary();
         
             try
             {
-                foreach(var e in expression.Split())
+                foreach(var e in Regex.Split(expression, @"(<[^>]*>)"))
                 {
                     if (brackets.Keys.Contains(e))
-                        result.Push(e);
+                        stack.Push(e);
                     else
                         if (brackets.Values.Contains(e))
-                            if (e == brackets[result.First()])
-                                result.Pop();
+                            if (e == brackets[stack.First()])
+                                stack.Pop();
                             else
                                 return false;
                     else
@@ -31,7 +32,7 @@ namespace TestTask
                 return false;
             }
 
-            return result.Count() == 0;
+            return stack.Count() == 0;
         }
     }
 }

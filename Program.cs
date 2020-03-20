@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 
 namespace TestTask
 {
@@ -7,7 +6,7 @@ namespace TestTask
     {
         static void Main(string[] args)
         {
-            GenerateResult.OpenFile(Configuration.GetInputPath());
+            WorkWithFiles.OpenFile(Configuration.GetInputPath());
             Console.ReadKey();
         }
     }
