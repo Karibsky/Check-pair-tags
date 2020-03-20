@@ -2,7 +2,7 @@
 {
     interface ISource
     {
-        void ReadFromSource(string source);
-        void WriteToSource(string source);
+        string ReadFromSource(string source);
+        void WriteToDestination(string path, string result);
     }
 }

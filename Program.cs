@@ -6,9 +6,17 @@ namespace TestTask
     {
         static void Main(string[] args)
         {
-            WorkWithFiles workWithFiles = new WorkWithFiles();
-            workWithFiles.ReadFromSource(Configuration.GetInputPath());
-            Console.ReadKey();
+            ISource source = new FileSource();
+            IResultGenerator generator = new ResultGenerator();
+
+            var inputText = source.ReadFromSource(Configuration.GetInputPath());
+
+            var isCorrect = CheckExpression.IsCorrect(inputText);
+            var result = generator.GetResult(inputText, isCorrect);
+
+            source.WriteToDestination(Configuration.GetOutputPath(), result);
+
+            Console.WriteLine(result);
         }
     }
 }

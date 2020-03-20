@@ -8,6 +8,7 @@ namespace TestTask
     class Configuration
     {
         public static string GetInputPath() => ConfigurationManager.AppSettings["InputFile"];
+
         public static string GetOutputPath() => ConfigurationManager.AppSettings["OutputFile"];
 
         public static Dictionary<string, string> GetWordsDictionary()

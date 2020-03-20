@@ -3,19 +3,20 @@ using System.IO;
 
 namespace TestTask
 {
-    class WorkWithFiles : ISource
+    class FileSource : ISource
     {
-        public async void ReadFromSource(string path)
+        public string ReadFromSource(string path)
         {
+            var result = "";
+
             if (!string.IsNullOrEmpty(path))
             {
                 try
                 {
-                    GenerateResult generateResult = new GenerateResult();
                     using (StreamReader sr = new StreamReader(path, true))
                     {
                         while (sr.Peek() > 0)
-                            generateResult.PrintResult(await sr.ReadToEndAsync());
+                            result = sr.ReadToEnd();
                     }
                 }
                 catch (Exception ex)
@@ -23,14 +24,16 @@ namespace TestTask
                     Console.WriteLine("The process failed {0}", ex.ToString());
                 }
             }
+
+            return result;
         }
 
-        public async void WriteToSource(string result)
+        public void WriteToDestination(string path, string result)
         {
             try
             {
-                using (StreamWriter sw = new StreamWriter(Configuration.GetOutputPath(), true))
-                    await sw.WriteLineAsync(result);
+                using (StreamWriter sw = new StreamWriter(path, true))
+                    sw.WriteLine(result);
             }
             catch (Exception ex)
             {

@@ -46,12 +46,13 @@
   <ItemGroup>
     <Compile Include="CheckExpression.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="GenerateResult.cs" />
-    <Compile Include="IResult.cs" />
+    <Compile Include="DatabaseSource.cs" />
+    <Compile Include="ResultGenerator.cs" />
+    <Compile Include="IResultGenerator.cs" />
     <Compile Include="ISource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkWithFiles.cs" />
+    <Compile Include="FileSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
