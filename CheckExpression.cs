@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace TestTask
 {
-    class CheckExpression
+    public class CheckExpression
     {
         public static bool IsCorrect(string expression)
         {

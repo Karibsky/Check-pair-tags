@@ -1,6 +1,6 @@
 ﻿namespace TestTask
 {
-    interface IResultGenerator
+    public interface IResultGenerator
     {
         string GetResult(string expression, bool isCorrect);
     }

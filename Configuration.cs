@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace TestTask
 {
-    class Configuration
+    public class Configuration
     {
         public static string GetInputPath() => ConfigurationManager.AppSettings["InputFile"];
 

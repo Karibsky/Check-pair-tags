@@ -1,8 +1,11 @@
-﻿namespace TestTask
+﻿using System.IO;
+
+namespace TestTask
 {
-    interface ISource
+    public interface ISource
     {
-        string ReadFromSource(string source);
-        void WriteToDestination(string path, string result);
+        string ReadFromSource(string path);
+
+        void WriteToDestination(string path, string text);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace TestTask
 {
-    class ResultGenerator : IResultGenerator
+    public class ResultGenerator : IResultGenerator
     {
         public string GetResult(string expression, bool isCorrect)
         {

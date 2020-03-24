@@ -1,20 +1,23 @@
 ﻿using System;
+using System.IO;
 
 namespace TestTask
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            ISource source = new FileSource();
+            FileManager fileManager = new TxtFileManager();
+            ISource source = fileManager.CreateStorage();
+
             IResultGenerator generator = new ResultGenerator();
 
-            var inputText = source.ReadFromSource(Configuration.GetInputPath());
+            var inputText = fileManager.ReadFromSource(Configuration.GetInputPath());
 
             var isCorrect = CheckExpression.IsCorrect(inputText);
             var result = generator.GetResult(inputText, isCorrect);
 
-            source.WriteToDestination(Configuration.GetOutputPath(), result);
+            fileManager.WriteToDestination(Configuration.GetOutputPath(), result);
 
             Console.WriteLine(result);
         }
