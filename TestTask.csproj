@@ -66,8 +66,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Text.cs" />
-    <Compile Include="ResultGenerator.cs" />
-    <Compile Include="IResultGenerator.cs" />
     <Compile Include="ISource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

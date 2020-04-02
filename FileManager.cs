@@ -12,10 +12,10 @@
             return result;
         }
    
-        public void WriteToDestination(string path, string text)
+        public void WriteToDestination(bool result, string path = null)
         {
             ISource source = CreateStorage();
-            source.WriteToDestination(path, text);
+            source.WriteToDestination(result, path);
         }
     }
 }

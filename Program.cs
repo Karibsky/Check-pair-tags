@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace TestTask
 {
@@ -10,16 +9,13 @@ namespace TestTask
             //FileManager fileManager = new TxtFileManager();
             FileManager fileManager = new DbFileManager();
 
-            IResultGenerator generator = new ResultGenerator();
-
-            var inputText = fileManager.ReadFromSource(Configuration.GetInputPath());
+            var inputText = fileManager.ReadFromSource("1"); //Configuration.GetInputPath()
 
             var isCorrect = CheckExpression.IsCorrect(inputText);
-            var result = generator.GetResult(inputText, isCorrect);
 
-            fileManager.WriteToDestination(Configuration.GetOutputPath(), result);
+            fileManager.WriteToDestination(isCorrect);
 
-            Console.WriteLine(result);
+            Console.WriteLine("Input text: {0} Result: {1}", inputText, isCorrect);
         }
     }
 }

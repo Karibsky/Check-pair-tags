@@ -1,4 +1,5 @@
 ﻿using System;
+using TestTask.Models;
 
 namespace TestTask
 {
@@ -8,12 +9,24 @@ namespace TestTask
         {
             public string ReadFromSource(string id)
             {
-                throw new NotImplementedException();
+                DatabaseContext db = new DatabaseContext();
+
+                return db.Texts.Find(int.Parse(id)).TextSource;
             }
 
-            public void WriteToDestination(string path, string text)
+            public void WriteToDestination(bool result, string path)
             {
-                throw new NotImplementedException();
+                using(DatabaseContext db = new DatabaseContext())
+                {
+                    Log log = new Log 
+                    { 
+                        Time = DateTime.Now, 
+                        Result = result 
+                    };
+
+                    db.Logs.Add(log);
+                    db.SaveChanges();
+                }
             }
         }
 

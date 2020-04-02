@@ -25,12 +25,12 @@ namespace TestTask
                 return result;
             }
 
-            public void WriteToDestination(string path, string text)
+            public void WriteToDestination(bool text, string path)
             {
                 try
                 {
                     using (StreamWriter sw = new StreamWriter(path, true))
-                        sw.WriteLine(text);
+                        sw.WriteLine("Result {0}", text);
                 }
                 catch (Exception ex)
                 {
