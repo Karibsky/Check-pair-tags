@@ -7,8 +7,8 @@ namespace TestTask
     {
         static void Main(string[] args)
         {
-            FileManager fileManager = new TxtFileManager();
-            ISource source = fileManager.CreateStorage();
+            //FileManager fileManager = new TxtFileManager();
+            FileManager fileManager = new DbFileManager();
 
             IResultGenerator generator = new ResultGenerator();
 
