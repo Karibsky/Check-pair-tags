@@ -2,8 +2,8 @@
 {
     public interface ISource
     {
-        string ReadFromSource(string path);
+        string ReadData();
 
-        void WriteToDestination(bool text, string path);
+        void WriteResult(bool result);
     }
 }

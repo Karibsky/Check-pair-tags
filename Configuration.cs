@@ -11,6 +11,8 @@ namespace TestTask
 
         public static string GetOutputPath() => ConfigurationManager.AppSettings["OutputFile"];
 
+        public static string GetDataSourceID() => ConfigurationManager.AppSettings["DataSourceID"];
+
         public static Dictionary<string, string> GetWordsDictionary()
         {
             var openWords = ConfigurationManager.AppSettings["OpenWords"].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);

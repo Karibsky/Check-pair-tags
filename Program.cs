@@ -7,13 +7,13 @@ namespace TestTask
         static void Main(string[] args)
         {
             //FileManager fileManager = new TxtFileManager();
-            FileManager fileManager = new DbFileManager();
+            DataSourceManager fileManager = new DbSourceManager();
 
-            var inputText = fileManager.ReadFromSource("1"); //Configuration.GetInputPath()
+            var inputText = fileManager.ReadData();
 
             var isCorrect = CheckExpression.IsCorrect(inputText);
 
-            fileManager.WriteToDestination(isCorrect);
+            fileManager.WriteResult(isCorrect);
 
             Console.WriteLine("Input text: {0} Result: {1}", inputText, isCorrect);
         }

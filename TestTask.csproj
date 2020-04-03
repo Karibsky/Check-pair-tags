@@ -57,8 +57,8 @@
     <Compile Include="CheckExpression.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="DatabaseContext.cs" />
-    <Compile Include="DbFileManager.cs" />
-    <Compile Include="FileManager.cs" />
+    <Compile Include="DbSourceManager.cs" />
+    <Compile Include="DataSourceManager.cs" />
     <Compile Include="Migrations\202004020941144_Initial.cs" />
     <Compile Include="Migrations\202004020941144_Initial.designer.cs">
       <DependentUpon>202004020941144_Initial.cs</DependentUpon>
@@ -69,7 +69,7 @@
     <Compile Include="ISource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TxtFileManager.cs" />
+    <Compile Include="TxtFileSourceManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

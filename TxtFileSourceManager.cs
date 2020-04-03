@@ -3,16 +3,18 @@ using System.IO;
 
 namespace TestTask
 {
-    public class TxtFileManager : FileManager
+    public class TxtFileSourceManager : DataSourceManager
     {
         private class TxtFileSource : ISource
         {
-            public string ReadFromSource(string path)
+            public string ReadData()
             {
                 var result = "";
 
                 try
                 {
+                    var path = Configuration.GetInputPath();
+
                     using (StreamReader sr = new StreamReader(path, true))
                         while (sr.Peek() > 0)
                             result = sr.ReadToEnd();
@@ -25,12 +27,14 @@ namespace TestTask
                 return result;
             }
 
-            public void WriteToDestination(bool text, string path)
+            public void WriteResult(bool result)
             {
                 try
                 {
+                    var path = Configuration.GetOutputPath();
+
                     using (StreamWriter sw = new StreamWriter(path, true))
-                        sw.WriteLine("Result {0}", text);
+                        sw.WriteLine("Result {0}", result);
                 }
                 catch (Exception ex)
                 {
