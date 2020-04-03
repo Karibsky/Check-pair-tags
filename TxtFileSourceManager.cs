@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace TestTask
+namespace Brackets
 {
     public class TxtFileSourceManager : DataSourceManager
     {
@@ -21,7 +21,7 @@ namespace TestTask
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("The process failed {0}", ex.Message);
+                    Console.WriteLine("The process failed: {0}", ex.Message);
                 }
 
                 return result;
@@ -34,11 +34,11 @@ namespace TestTask
                     var path = Configuration.GetOutputPath();
 
                     using (StreamWriter sw = new StreamWriter(path, true))
-                        sw.WriteLine("Result {0}", result);
+                        sw.WriteLine("Result: {0}", result);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("The process failed {0}", ex.Message);
+                    Console.WriteLine("The process failed: {0}", ex.Message);
                 }
             }
         }

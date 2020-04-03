@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace TestTask
+namespace Brackets
 {
     public class Program
     {
         static void Main(string[] args)
         {
-            //FileManager fileManager = new TxtFileManager();
+            //DataSourceManager fileManager = new TxtFileSourceManager();
             DataSourceManager fileManager = new DbSourceManager();
 
             var inputText = fileManager.ReadData();

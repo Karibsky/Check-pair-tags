@@ -1,4 +1,4 @@
-﻿namespace TestTask
+﻿namespace Brackets
 {
     public abstract class DataSourceManager
     {

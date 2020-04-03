@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace TestTask
+namespace Brackets
 {
     public class CheckExpression
     {

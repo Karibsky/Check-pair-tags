@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 
-namespace TestTask
+namespace Brackets
 {
     public class Configuration
     {

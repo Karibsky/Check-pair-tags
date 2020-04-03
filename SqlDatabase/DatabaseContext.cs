@@ -1,9 +1,9 @@
-﻿using System.Data.Entity;
-using TestTask.Models;
+﻿using SqlDatabase.Models;
+using System.Data.Entity;
 
-namespace TestTask
+namespace SqlDatabase
 {
-    class DatabaseContext : DbContext
+    public class DatabaseContext : DbContext
     {
         public DatabaseContext() : base("ConnectionString") { }
 

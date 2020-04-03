@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TestTask.Models
+namespace SqlDatabase.Models
 {
-    class Text
+    public class Text
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

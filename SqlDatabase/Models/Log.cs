@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TestTask.Models
+namespace SqlDatabase.Models
 {
-    class Log
+    public class Log
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

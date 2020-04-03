@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Data.SqlClient;
-using TestTask.Models;
+using SqlDatabase;
+using SqlDatabase.Models;
 
-namespace TestTask
+namespace Brackets
 {
     class DbSourceManager : DataSourceManager
     {
