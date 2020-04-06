@@ -6,14 +6,13 @@ namespace Brackets
     {
         static void Main(string[] args)
         {
-            //DataSourceManager fileManager = new TxtFileSourceManager();
-            DataSourceManager fileManager = new DbSourceManager();
+            var dataSourceManager = new DataSourceIoC<DbSourceManager>();
 
-            var inputText = fileManager.ReadData();
+            var inputText = dataSourceManager.ReadData();
 
             var isCorrect = CheckExpression.IsCorrect(inputText);
 
-            fileManager.WriteResult(isCorrect);
+            dataSourceManager.WriteResult(isCorrect);
 
             Console.WriteLine("Input text: {0} Result: {1}", inputText, isCorrect);
         }

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Linq;
 using SqlDatabase;
 using SqlDatabase.Models;
 
 namespace Brackets
 {
-    class DbSourceManager : DataSourceManager
+    class DbSourceManager : DataSourceManager, ISource
     {
         private class DbFileSource : ISource
         {
@@ -15,17 +16,16 @@ namespace Brackets
                 
                 try
                 {
-                    var id = Configuration.GetDataSourceID();
+                    var id = int.Parse(Configuration.GetDataSourceID());
 
                     using (DatabaseContext db = new DatabaseContext())
-                    {
-                        result = db.Texts.Find(int.Parse(id)).TextSource;
-                        db.Dispose();
-                    }
+                        result = db.Texts
+                                    .FirstOrDefault(t => t.TextID == id)
+                                    .TextSource;
                 }
                 catch (SqlException ex)
                 {
-                    Console.WriteLine("Error: {0}", ex.Message);
+                    throw new Exception(ex.Message);
                 }
 
                 return result;
@@ -49,7 +49,7 @@ namespace Brackets
                 }
                 catch(SqlException ex)
                 {
-                    Console.WriteLine("Error: {0}", ex.Message);
+                    throw new Exception(ex.Message);
                 }
             }
         }

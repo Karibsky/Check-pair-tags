@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Brackets
 {
-    public class TxtFileSourceManager : DataSourceManager
+    public class TxtFileSourceManager : DataSourceManager, ISource
     {
         private class TxtFileSource : ISource
         {
@@ -21,7 +21,7 @@ namespace Brackets
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("The process failed: {0}", ex.Message);
+                    throw new Exception(ex.Message);
                 }
 
                 return result;
@@ -38,7 +38,7 @@ namespace Brackets
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("The process failed: {0}", ex.Message);
+                    throw new Exception(ex.Message);
                 }
             }
         }
