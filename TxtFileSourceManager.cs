@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Brackets
 {
-    public class TxtFileSourceManager : DataSourceManager, ISource
+    public class TxtFileSourceManager : DataSourceManager
     {
         private class TxtFileSource : ISource
         {

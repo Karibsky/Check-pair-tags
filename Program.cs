@@ -6,13 +6,14 @@ namespace Brackets
     {
         static void Main(string[] args)
         {
-            var dataSourceManager = new DataSourceIoC<DbSourceManager>();
+            IocContainer.InitializeContainer();
+            var instance = IocContainer.Resolve<ISource>();
 
-            var inputText = dataSourceManager.ReadData();
+            var inputText = instance.ReadData();
 
             var isCorrect = CheckExpression.IsCorrect(inputText);
 
-            dataSourceManager.WriteResult(isCorrect);
+            instance.WriteResult(isCorrect);
 
             Console.WriteLine("Input text: {0} Result: {1}", inputText, isCorrect);
         }

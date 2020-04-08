@@ -1,6 +1,6 @@
 ﻿namespace Brackets
 {
-    public abstract class DataSourceManager
+    public abstract class DataSourceManager : ISource
     {
         public abstract ISource CreateStorage();
 

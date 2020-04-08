@@ -6,7 +6,7 @@ using SqlDatabase.Models;
 
 namespace Brackets
 {
-    class DbSourceManager : DataSourceManager, ISource
+    public class DbSourceManager : DataSourceManager
     {
         private class DbFileSource : ISource
         {
