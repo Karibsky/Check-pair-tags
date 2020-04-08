@@ -1,4 +1,5 @@
 ﻿using LightInject;
+using System;
 
 namespace Brackets
 {
@@ -14,7 +15,14 @@ namespace Brackets
 
         public static T Resolve<T>()
         {
-            return container.GetInstance<T>();
+            try
+            {
+                return container.GetInstance<T>();
+            }
+            catch(Exception) 
+            {
+                throw new Exception("Container is not initialized");
+            }
         }
     }
 }
