@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BracketsUI.WebForms.ViewModels;
+using SqlDatabase;
+using System;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace BracketsUI.WebForms
 {
-    public partial class About : Page
+    public partial class Results : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            var results = BracketsDataService.GetChecksHistoryList().Select(x => new CheckResultViewModel
+            {
+                Id = x.LogID,
+                Time = x.Time.ToShortDateString(),
+                Result = x.Result
+            });
+
+            ResultsHistoryList.DataSource = results;
+            ResultsHistoryList.DataBind();
         }
     }
 }

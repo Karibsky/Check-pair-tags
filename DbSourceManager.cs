@@ -16,11 +16,10 @@ namespace Brackets
                 using (DatabaseContext db = new DatabaseContext())
                 {
                     var result = db.Texts
-                                .FirstOrDefault(t => t.TextID == id)
-                                .TextSource;
+                                .FirstOrDefault(t => t.TextID == id);
 
                     if (result != null)
-                        return result;
+                        return result.TextSource;
                     else
                         throw new Exception($"Text with id = {id} not found in database");
                 }

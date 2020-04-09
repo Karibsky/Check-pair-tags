@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BracketsDataService.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="Migrations\202004031343581_Initial.cs" />
     <Compile Include="Migrations\202004031343581_Initial.designer.cs">

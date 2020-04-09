@@ -5,7 +5,7 @@ namespace SqlDatabase
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext() : base("ConnectionString") { }
+        public DatabaseContext() : base("BracketsConnectionString") { }
 
         public DbSet<Log> Logs { get; set; }
 
