@@ -15,14 +15,10 @@ namespace Brackets
 
         public static T Resolve<T>()
         {
-            try
-            {
+            if(container != null)
                 return container.GetInstance<T>();
-            }
-            catch(Exception) 
-            {
+            else
                 throw new Exception("Container is not initialized");
-            }
         }
     }
 }

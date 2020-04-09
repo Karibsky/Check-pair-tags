@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Linq;
 using SqlDatabase;
 using SqlDatabase.Models;
@@ -12,44 +11,33 @@ namespace Brackets
         {
             public string ReadData()
             {
-                var result = "";
-                
-                try
-                {
-                    var id = int.Parse(Configuration.GetDataSourceID());
+                var id = int.Parse(Configuration.GetDataSourceID());
 
-                    using (DatabaseContext db = new DatabaseContext())
-                        result = db.Texts
-                                    .FirstOrDefault(t => t.TextID == id)
-                                    .TextSource;
-                }
-                catch (SqlException ex)
+                using (DatabaseContext db = new DatabaseContext())
                 {
-                    throw new Exception(ex.Message);
-                }
+                    var result = db.Texts
+                                .FirstOrDefault(t => t.TextID == id)
+                                .TextSource;
 
-                return result;
+                    if (result != null)
+                        return result;
+                    else
+                        throw new Exception($"Text with id = {id} not found in database");
+                }
             }
 
             public void WriteResult(bool result)
             {
-                try
+                using (DatabaseContext db = new DatabaseContext())
                 {
-                    using (DatabaseContext db = new DatabaseContext())
+                    Log log = new Log
                     {
-                        Log log = new Log
-                        {
-                            Time = DateTime.Now,
-                            Result = result
-                        };
+                        Time = DateTime.Now,
+                        Result = result
+                    };
 
-                        db.Logs.Add(log);
-                        db.SaveChanges();
-                    }
-                }
-                catch(SqlException ex)
-                {
-                    throw new Exception(ex.Message);
+                    db.Logs.Add(log);
+                    db.SaveChanges();
                 }
             }
         }
