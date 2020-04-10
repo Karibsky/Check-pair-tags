@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using SqlDatabase;
-using SqlDatabase.Models;
+﻿using SqlDatabase;
 
 namespace Brackets
 {
@@ -13,31 +10,12 @@ namespace Brackets
             {
                 var id = int.Parse(Configuration.GetDataSourceID());
 
-                using (DatabaseContext db = new DatabaseContext())
-                {
-                    var result = db.Texts
-                                .FirstOrDefault(t => t.TextID == id);
-
-                    if (result != null)
-                        return result.TextSource;
-                    else
-                        throw new Exception($"Text with id = {id} not found in database");
-                }
+                return BracketsDataService.GetTextByID(id);
             }
 
             public void WriteResult(bool result)
             {
-                using (DatabaseContext db = new DatabaseContext())
-                {
-                    Log log = new Log
-                    {
-                        Time = DateTime.Now,
-                        Result = result
-                    };
-
-                    db.Logs.Add(log);
-                    db.SaveChanges();
-                }
+                BracketsDataService.SaveResultToDatabase(result);
             }
         }
 

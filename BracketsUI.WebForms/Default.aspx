@@ -14,11 +14,13 @@
         <asp:Button ID="File" runat="server" Text="Check Expression" CssClass="btn btn-success" OnClick="FileButton_Click" />
     </div>
     <div id="from_database" class="collapse">
+        <asp:Label runat="server" Text="Enter database record id"></asp:Label>
         <asp:TextBox ID="RecordID" runat="server" CssClass="form-control"></asp:TextBox>
         <asp:Button ID="Database" runat="server" Text="Check Expression" CssClass="btn btn-success" OnClick="DatabaseButton_Click" />
     </div>
     <div id="from_ui" class="collapse">
-        <asp:TextBox ID="Expression" runat="server" CssClass="form-control"></asp:TextBox>
+        <asp:Label runat="server" Text="Enter text to verify"></asp:Label>
+        <asp:TextBox ID="Expression" runat="server" CssClass="form-control" TextMode="multiline" Columns="100" Rows="10" style="resize:none"></asp:TextBox>
         <asp:Button ID="UI" runat="server" Text="Check Expression" CssClass="btn btn-success" OnClick="UIButton_Click" />
     </div>
     <hr />

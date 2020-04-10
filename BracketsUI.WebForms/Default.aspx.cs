@@ -74,10 +74,7 @@ namespace BracketsUI.WebForms
                 try
                 {
                     var text = BracketsDataService.GetTextByID(int.Parse(RecordID.Text));
-                    var isCorrect = CheckExpression.IsCorrect(text);
-                    BracketsDataService.SaveResultToDatabase(isCorrect);
-
-                    StatusLabel.Text = $"Result of checking: {isCorrect}";
+                    GetCheckResult(text);
                 }
                 catch(Exception ex)
                 {
@@ -94,10 +91,7 @@ namespace BracketsUI.WebForms
             {
                 try
                 {
-                    var isCorrect = CheckExpression.IsCorrect(Expression.Text);
-                    BracketsDataService.SaveResultToDatabase(isCorrect);
-
-                    StatusLabel.Text = $"Result of checking: {isCorrect}";
+                    GetCheckResult(Expression.Text);
                 }
                 catch (Exception ex)
                 {
@@ -106,6 +100,14 @@ namespace BracketsUI.WebForms
             }
             else
                 StatusLabel.Text = "Check status: Text field is empty!";
+        }
+
+        private void GetCheckResult(string text)
+        {
+            var isCorrect = CheckExpression.IsCorrect(text);
+            BracketsDataService.SaveResultToDatabase(isCorrect);
+
+            StatusLabel.Text = $"Result of checking: {isCorrect}";
         }
     }
 }
