@@ -1,6 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css');
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
@@ -13,6 +13,24 @@ body {
 .body-content {
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
+}
+
+.body-content .collapse {
+    padding-top:15px;
+}
+
+.collapsing {
+    -webkit-transition: none;
+    transition: none;
+    display: none;
+}
+
+.body-content .collapse input {
+    margin:5px 0;
+}
+
+table {
+    margin-top:15px;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */

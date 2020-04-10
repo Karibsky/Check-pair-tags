@@ -2,6 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %></h2>
+
     <asp:ListView runat="server" ID="ResultsHistoryList">
         <LayoutTemplate>
             <table runat="server" class="table table-bordered table-hover">
