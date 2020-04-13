@@ -152,7 +152,6 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\CheckResultViewModel.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -179,6 +178,10 @@
     <ProjectReference Include="..\Brackets.csproj">
       <Project>{7d019e2e-b7b3-4e11-96b9-678b614473d6}</Project>
       <Name>Brackets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BracketsDataServiceProvider\BracketsDataServiceProvider.csproj">
+      <Project>{15770413-6d1b-4455-a55d-29ccaa61a73b}</Project>
+      <Name>BracketsDataServiceProvider</Name>
     </ProjectReference>
     <ProjectReference Include="..\SqlDatabase\SqlDatabase.csproj">
       <Project>{a8b52e71-461e-423b-9242-0cdfc6e432ba}</Project>

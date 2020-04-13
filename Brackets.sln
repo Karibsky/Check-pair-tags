@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BracketsUI.WebForms", "Brac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BracketsUI.MVC", "BracketsUI.MVC\BracketsUI.MVC.csproj", "{B24DE366-A5A5-45C0-975C-69418330A63E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BracketsDataServiceProvider", "BracketsDataServiceProvider\BracketsDataServiceProvider.csproj", "{15770413-6D1B-4455-A55D-29CCAA61A73B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B24DE366-A5A5-45C0-975C-69418330A63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B24DE366-A5A5-45C0-975C-69418330A63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B24DE366-A5A5-45C0-975C-69418330A63E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15770413-6D1B-4455-A55D-29CCAA61A73B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15770413-6D1B-4455-A55D-29CCAA61A73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15770413-6D1B-4455-A55D-29CCAA61A73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15770413-6D1B-4455-A55D-29CCAA61A73B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

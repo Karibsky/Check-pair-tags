@@ -1,4 +1,5 @@
 ﻿using Brackets;
+using SqlDatabase;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -13,6 +14,7 @@ namespace BracketsUI.MVC.Controllers
 
             foreach (var tag in tags)
                 tagsList.Add(tag.Key + tag.Value);
+
             ViewBag.Tags = tagsList;
 
             return View();
@@ -20,7 +22,9 @@ namespace BracketsUI.MVC.Controllers
         
         public ActionResult Results()
         {
-            return View();
+            var results = BracketsDataService.GetChecksHistoryList();
+
+            return View(results);
         }
     }
 }

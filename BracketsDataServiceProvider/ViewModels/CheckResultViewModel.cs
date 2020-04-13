@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace BracketsUI.WebForms.ViewModels
+﻿namespace BracketsDataServiceProvider
 {
     public class CheckResultViewModel
     {

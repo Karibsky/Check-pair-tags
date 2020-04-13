@@ -1,4 +1,4 @@
-﻿using BracketsUI.WebForms.ViewModels;
+﻿using BracketsDataServiceProvider;
 using SqlDatabase;
 using System;
 using System.Linq;
@@ -9,12 +9,7 @@ namespace BracketsUI.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var results = BracketsDataService.GetChecksHistoryList().Select(x => new CheckResultViewModel
-            {
-                Id = x.LogID,
-                Time = x.Time.ToShortDateString(),
-                Result = x.Result
-            });
+            var results = BracketsDataService.GetChecksHistoryList();
 
             ResultsHistoryList.DataSource = results;
             ResultsHistoryList.DataBind();
