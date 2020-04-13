@@ -33,14 +33,8 @@ namespace BracketsUI.WebForms
                     {
                         if (FileUpload.PostedFile.ContentLength < 102400)
                         {
-                            string filename = Path.GetFileName(FileUpload.FileName);
-                            string filepath = Server.MapPath("~/Upload/") + filename;
-                            FileUpload.SaveAs(filepath);
-
-                            var isCorrect = ParseFile(filepath);
-                            BracketsDataService.SaveResultToDatabase(isCorrect);
-
-                            StatusLabel.Text = $"Result of checking: {isCorrect}";
+                            using (StreamReader sr = new StreamReader(FileUpload.PostedFile.InputStream, true))
+                                GetCheckResult(sr.ReadToEnd());
                         }
                         else
                             StatusLabel.Text = "Upload status: The file has to be less than 100 kb!";
@@ -55,14 +49,6 @@ namespace BracketsUI.WebForms
             }
             else
                 StatusLabel.Text = "Upload status: File not selected!";
-        }
-
-        private bool ParseFile(string path)
-        {
-            using (StreamReader sr = new StreamReader(path, true))
-                while (sr.Peek() > 0)
-                    return CheckExpression.IsCorrect(sr.ReadToEnd());
-            return false;
         }
 
         protected void DatabaseButton_Click(object sender, EventArgs e)

@@ -17,21 +17,21 @@
 
 
 <div id="from_file" class="collapse">
-    <label for="file_upload">Choose file to upload</label>
-    <input type="file" id="file_upload" accept=".txt">
-    <button type="submit" class="btn btn-success">Check expression</button>
+    <input type="file" id="file_upload" name="file_upload" accept=".txt">
+    <button type="submit" class="btn btn-success file">Check expression</button>
 </div>
 <div id="from_database" class="collapse">
     <label for="record_id">Enter database record id</label>
     <input type="text" id="record_id" class="form-control">
-    <button type="submit" class="btn btn-success">Check expression</button>
+    <button type="submit" class="btn btn-success database">Check expression</button>
 </div>
 <div id="from_ui" class="collapse">
-    <label>Enter text to verify</label>
-    <textarea id="expression" class="form-control"></textarea>
-    <button type="submit" class="btn btn-success">Check Expression</button>
+    <label for="expression">Enter text to verify</label>
+    <textarea id="expression" class="form-control" cols="100" rows="10"></textarea>
+    <button class="btn btn-success ui">Check Expression</button>
 </div>
-<hr />
+
+<div class="alert alert-info"></div>
 
 @section scripts
 {
@@ -40,6 +40,59 @@
             $('.collapse.in').each(function () {
                 $(this).collapse('hide');
             });
+        });
+        $('.ui').click(function (e) {
+            e.preventDefault;
+            $.ajax({
+                type: "POST",
+                url: "CheckFromUI",
+                data: {
+                    text: $('#expression').val()
+                },
+                success: function (data) {
+                    $('.alert-info').show().text(data);
+                    $('.alert-info').delay(3500).hide("slow").text();
+                }
+            });
+        });
+        $('.database').click(function (e) {
+            e.preventDefault;
+            $.ajax({
+                type: "POST",
+                url: "CheckFromDatabase",
+                data: {
+                    recordID: $('#record_id').val()
+                },
+                success: function (data) {
+                    $('.alert-info').show().text(data);
+                    $('.alert-info').delay(3500).hide("slow").text();
+                }
+            });
+        });
+        $('.file').click(function (e) {
+            e.preventDefault;
+
+            var files = document.getElementById('file_upload').files;
+            if (files.length > 0) {
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
+                    for (var x = 0; x < files.length; x++) {
+                        data.append("file" + x, files[x]);
+                    }
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "CheckFromFile",
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $('.alert-info').show().text(data);
+                        $('.alert-info').delay(3500).hide("slow").text();
+                    }
+                });
+            }
         });
     </script>
 }

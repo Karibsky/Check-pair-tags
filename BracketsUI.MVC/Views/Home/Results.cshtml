@@ -13,22 +13,25 @@
         <tr runat="server" id="itemPlaceholder"></tr>
     </thead>
     <tbody>
-        @foreach (var result in Model)
+        @if (Model.Count > 0)
         {
-        <tr>
-            <th scope="row">@result.LogID</th>
-            <td>@result.Time</td>
-            <td>
-                @if (result.Result)
-                {
-                    <i class="fa fa-check-circle"></i>
-                }
-                else
-                {
-                    <i class="fa fa-times-circle"></i>
-                }
-            </td>
-        </tr>
+            foreach (var result in Model)
+            {
+                <tr>
+                    <th scope="row">@result.LogID</th>
+                    <td>@result.Time</td>
+                    <td>
+                        @if (result.Result)
+                        {
+                            <i class="fa fa-check-circle"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-times-circle"></i>
+                        }
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>

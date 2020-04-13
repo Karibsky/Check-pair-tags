@@ -65,8 +65,9 @@ textarea {
     margin-bottom:5px;
 }
 
-#errors {
-    display:none;
+.alert-info {
+    display: none;
+    margin-top: 10px;
 }
 
 /* Responsive: Portrait tablets and up */

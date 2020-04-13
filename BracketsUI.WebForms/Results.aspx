@@ -19,7 +19,7 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr runat="server" id="Tr1">
-                <th scope="row"><%# Eval("Id") %></th>
+                <th scope="row"><%# Eval("LogId") %></th>
                 <td><%# Eval("Time") %></td>
                 <td><i class="fa <%# (bool)Eval("Result") ? "fa-check-circle" : "fa-times-circle" %>"</i></td>
             </tr>
