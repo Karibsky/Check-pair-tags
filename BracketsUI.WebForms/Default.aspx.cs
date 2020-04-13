@@ -57,15 +57,18 @@ namespace BracketsUI.WebForms
 
             if (regex.IsMatch(RecordID.Text))
             {
+                var text = string.Empty;
+
                 try
                 {
-                    var text = BracketsDataService.GetTextByID(int.Parse(RecordID.Text));
-                    GetCheckResult(text);
+                    text = BracketsDataService.GetTextByID(int.Parse(RecordID.Text));
                 }
                 catch(Exception ex)
                 {
-                    StatusLabel.Text = "The following error occured: " + ex.Message;
+                    StatusLabel.Text = ex.Message;
                 }
+
+                GetCheckResult(text);
             }
             else
                 StatusLabel.Text = "Check status: Only numbers allowed!";
@@ -74,26 +77,24 @@ namespace BracketsUI.WebForms
         protected void UIButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(Expression.Text))
-            {
-                try
-                {
-                    GetCheckResult(Expression.Text);
-                }
-                catch (Exception ex)
-                {
-                    StatusLabel.Text = "The following error occured: " + ex.Message;
-                }
-            }
+                GetCheckResult(Expression.Text);
             else
                 StatusLabel.Text = "Check status: Text field is empty!";
         }
 
         private void GetCheckResult(string text)
         {
-            var isCorrect = CheckExpression.IsCorrect(text);
-            BracketsDataService.SaveResultToDatabase(isCorrect);
+            try
+            {
+                var isCorrect = CheckExpression.IsCorrect(text);
+                BracketsDataService.SaveResultToDatabase(isCorrect);
 
-            StatusLabel.Text = $"Result of checking: {isCorrect}";
+                StatusLabel.Text = $"Result of checking: {isCorrect}";
+            }
+            catch(Exception ex)
+            {
+                StatusLabel.Text = "The following error occured: " + ex.Message;
+            }
         }
     }
 }

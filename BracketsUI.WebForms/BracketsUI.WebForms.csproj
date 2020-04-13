@@ -183,10 +183,6 @@
       <Project>{15770413-6d1b-4455-a55d-29ccaa61a73b}</Project>
       <Name>BracketsDataServiceProvider</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SqlDatabase\SqlDatabase.csproj">
-      <Project>{a8b52e71-461e-423b-9242-0cdfc6e432ba}</Project>
-      <Name>SqlDatabase</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
