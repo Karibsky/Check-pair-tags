@@ -1,24 +1,81 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css');
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+    .body-content .collapse {
+        padding-top: 15px;
+    }
+
+.collapsing {
+    -webkit-transition: none;
+    transition: none;
+    display: none;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
+.body-content .collapse input {
+    margin: 5px 0;
+}
+
+table {
+    margin-top: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.table tr:nth-child(even) {
+    background: #F5F5F5;
+}
+
+.fa {
+    font-size: 20px;
+}
+
+.fa-check-circle {
+    color: green;
+}
+
+.fa-times-circle {
+    color: red;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    cursor: pointer;
+    background-color: #DCDCDC;
+}
+
+textarea {
+    resize:none;
+    margin-bottom:5px;
+}
+
+#errors {
+    display:none;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+
+    .body-content {
+        padding: 0;
+    }
 }

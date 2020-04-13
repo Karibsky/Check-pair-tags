@@ -1,7 +1,23 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Results History";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2>@ViewBag.Title</h2>
 
-<p>Use this area to provide additional information.</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Time</th>
+            <th scope="col">Result</th>
+        </tr>
+        <tr runat="server" id="itemPlaceholder"></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td><i class="fa fa-check-circle"></i></td>
+        </tr>
+    </tbody>
+</table>
+    

@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Brackets;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BracketsUI.MVC.Controllers
@@ -10,20 +8,18 @@ namespace BracketsUI.MVC.Controllers
     {
         public ActionResult Index()
         {
+            var tags = Configuration.GetWordsDictionary();
+            var tagsList = new List<string>();
+
+            foreach (var tag in tags)
+                tagsList.Add(tag.Key + tag.Value);
+            ViewBag.Tags = tagsList;
+
             return View();
         }
-
-        public ActionResult About()
+        
+        public ActionResult Results()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
