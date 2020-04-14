@@ -1,7 +1,5 @@
-﻿using BracketsDataServiceProvider;
-using SqlDatabase;
+﻿using SqlDatabase;
 using System;
-using System.Linq;
 
 namespace BracketsUI.WebForms
 {
@@ -9,9 +7,7 @@ namespace BracketsUI.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var results = BracketsDataService.GetChecksHistoryList();
-
-            ResultsHistoryList.DataSource = results;
+            ResultsHistoryList.DataSource = BracketsDataService.GetChecksHistoryList();
             ResultsHistoryList.DataBind();
         }
     }

@@ -25,53 +25,36 @@ namespace BracketsUI.WebForms
 
         protected void FileButton_Click(object sender, EventArgs e)
         {
-            if (FileUpload.HasFile)
+            try
             {
-                try
-                {
-                    if (FileUpload.PostedFile.ContentType == "text/plain")
-                    {
-                        if (FileUpload.PostedFile.ContentLength < 102400)
-                        {
-                            using (StreamReader sr = new StreamReader(FileUpload.PostedFile.InputStream, true))
-                                GetCheckResult(sr.ReadToEnd());
-                        }
-                        else
-                            StatusLabel.Text = "Upload status: The file has to be less than 100 kb!";
-                    }
-                    else
-                        StatusLabel.Text = "Upload status: Only TXT files are accepted!";
-                }
-                catch (Exception ex)
-                {
-                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
-                }
+                if (!FileUpload.HasFile || FileUpload.PostedFile.ContentLength > 102400 || FileUpload.PostedFile.ContentType != "text/plain")
+                    StatusLabel.Text = "Upload status: File is not valid! You can download only TXT files to be less than 100 kb!";
+                else
+                    using (StreamReader sr = new StreamReader(FileUpload.PostedFile.InputStream, true))
+                        GetCheckResult(sr.ReadToEnd());
             }
-            else
-                StatusLabel.Text = "Upload status: File not selected!";
+            catch (Exception ex)
+            {
+                StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+            }
         }
 
         protected void DatabaseButton_Click(object sender, EventArgs e)
         {
-            Regex regex = new Regex(@"^\d+$");
-
-            if (regex.IsMatch(RecordID.Text))
+            try
             {
-                var text = string.Empty;
-
-                try
+                if (new Regex(@"^\d+$").IsMatch(RecordID.Text))
                 {
-                    text = BracketsDataService.GetTextByID(int.Parse(RecordID.Text));
+                    var text = BracketsDataService.GetTextByID(int.Parse(RecordID.Text));
+                    GetCheckResult(text);
                 }
-                catch(Exception ex)
-                {
-                    StatusLabel.Text = ex.Message;
-                }
-
-                GetCheckResult(text);
+                else
+                    StatusLabel.Text = "Check status: Only numbers allowed!";
             }
-            else
-                StatusLabel.Text = "Check status: Only numbers allowed!";
+            catch (Exception ex)
+            {
+                StatusLabel.Text = ex.Message;
+            }
         }
 
         protected void UIButton_Click(object sender, EventArgs e)

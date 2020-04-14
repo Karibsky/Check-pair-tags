@@ -3,6 +3,7 @@ using SqlDatabase;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
@@ -31,97 +32,69 @@ namespace BracketsUI.MVC.Controllers
             return View(results);
         }
 
-        private bool GetCheckResult(string text)
+        private string GetCheckResult(string text)
         {
-            var isCorrect = CheckExpression.IsCorrect(text);
-            BracketsDataService.SaveResultToDatabase(isCorrect);
+            try
+            {
+                var isCorrect = CheckExpression.IsCorrect(text);
+                BracketsDataService.SaveResultToDatabase(isCorrect);
 
-            return isCorrect;
+                return $"Result of checking: { isCorrect }";
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         [HttpPost]
         [ValidateInput(false)]
         public string CheckFromUI(string text)
         {
-            var isCorrect = false;
-
-            if (!string.IsNullOrWhiteSpace(text))
-            {
-                try
-                {
-                    isCorrect = GetCheckResult(text);
-                }
-                catch (Exception ex)
-                {
-                    return "The following error occured: " + ex.Message;
-                }
-            }
-            else
+            if (string.IsNullOrWhiteSpace(text))
                 return "Check status: Text field is empty!";
 
-            return $"Result of checking: {isCorrect}";
+            return GetCheckResult(text);
         }
 
         [HttpPost]
         public string CheckFromDatabase(string recordID)
         {
-            Regex regex = new Regex(@"^\d+$");
-            var isCorrect = false;
-
-            if (regex.IsMatch(recordID))
+            try
             {
-                try
-                {
-                    var text = BracketsDataService.GetTextByID(int.Parse(recordID));
-                    isCorrect = GetCheckResult(text);
-                }
-                catch (Exception ex)
-                {
-                    return "The following error occured: " + ex.Message;
-                }
-            }
-            else
-                return "Check status: Only numbers allowed!";
+                if (!new Regex(@"^\d+$").IsMatch(recordID))
+                    return "Check status: Only numbers allowed!";
 
-            return $"Result of checking: {isCorrect}";
+                var text = BracketsDataService.GetTextByID(int.Parse(recordID));
+                return GetCheckResult(text);
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         [HttpPost]
         public string CheckFromFile()
         {
-            var isCorrect = false;
-
             try
             {
-                foreach (string file in Request.Files)
-                {
-                    var upload = Request.Files[file];
+                var upload = Request.Files[Request.Files.GetKey(0)];
 
-                    if (upload != null)
-                    {
-                        if (upload.ContentType == "text/plain")
-                        {
-                            if (upload.ContentLength < 102400)
-                            {
-                                using (StreamReader sr = new StreamReader(upload.InputStream, true))
-                                    isCorrect = GetCheckResult(sr.ReadToEnd());
-                            }
-                            else
-                                return "Upload status: The file has to be less than 100 kb!";
-                        }
-                        else
-                            return "Upload status: Only TXT files are accepted!";
-                    }
-                    else
-                        return "Upload status: File not selected!";
-                }
+                if (upload == null)
+                    return "Upload status: File not selected!";
+                if (upload.ContentType != "text/plain")
+                    return "Upload status: Only TXT files are accepted!";
+                if (upload.ContentLength > 102400)
+                    return "Upload status: The file has to be less than 100 kb!";
+
+                using (StreamReader sr = new StreamReader(upload.InputStream, true))
+                    return GetCheckResult(sr.ReadToEnd());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return "The following error occured: " + ex.Message;
             }
-
-            return $"Result of checking: {isCorrect}";
         }
     }
 }

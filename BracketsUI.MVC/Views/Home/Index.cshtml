@@ -43,31 +43,11 @@
         });
         $('.ui').click(function (e) {
             e.preventDefault;
-            $.ajax({
-                type: "POST",
-                url: "CheckFromUI",
-                data: {
-                    text: $('#expression').val()
-                },
-                success: function (data) {
-                    $('.alert-info').show().text(data);
-                    $('.alert-info').delay(3500).hide("slow").text();
-                }
-            });
+            sendRequest("CheckFromUI", { text: $('#expression').val() }, true);
         });
         $('.database').click(function (e) {
             e.preventDefault;
-            $.ajax({
-                type: "POST",
-                url: "CheckFromDatabase",
-                data: {
-                    recordID: $('#record_id').val()
-                },
-                success: function (data) {
-                    $('.alert-info').show().text(data);
-                    $('.alert-info').delay(3500).hide("slow").text();
-                }
-            });
+            sendRequest("CheckFromDatabase", { recordID: $('#record_id').val() }, true);
         });
         $('.file').click(function (e) {
             e.preventDefault;
@@ -76,23 +56,24 @@
             if (files.length > 0) {
                 if (window.FormData !== undefined) {
                     var data = new FormData();
-                    for (var x = 0; x < files.length; x++) {
-                        data.append("file" + x, files[x]);
-                    }
+                    data.append("file", files[0]);
                 }
-
-                $.ajax({
-                    type: "POST",
-                    url: "CheckFromFile",
-                    data: data,
-                    contentType: false,
-                    processData: false,
-                    success: function (data) {
-                        $('.alert-info').show().text(data);
-                        $('.alert-info').delay(3500).hide("slow").text();
-                    }
-                });
+                sendRequest("CheckFromFile", data, false);
             }
         });
+
+        sendRequest = function (method, data, processData) {
+            $.ajax({
+                type: "POST",
+                url: method,
+                data: data,
+                processData: processData,
+                contentType: processData === true ? "application/x-www-form-urlencoded; charset=UTF-8" : false,
+                success: function (data) {
+                    $('.alert-info').show().text(data);
+                    $('.alert-info').delay(3500).hide("slow").text();
+                }
+            });
+        };
     </script>
 }
