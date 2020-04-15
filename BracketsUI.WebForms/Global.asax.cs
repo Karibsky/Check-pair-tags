@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Brackets.Data;
 using Brackets.ViewModels;
 using System;
 using System.Web;
@@ -17,7 +16,7 @@ namespace BracketsUI.WebForms
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Mapper.Initialize(cfg => {
-                cfg.CreateMap<CheckResultViewModel, LogDto>();
+                cfg.AddProfile<CheckResultViewModelProfile>();
             });
         }
     }

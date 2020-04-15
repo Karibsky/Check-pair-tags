@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Brackets.Data;
 using Brackets.ViewModels;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -17,7 +16,7 @@ namespace BracketsUI.MVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Mapper.Initialize(cfg => {
-                cfg.CreateMap<CheckResultViewModel, LogDto>();
+                cfg.AddProfile<CheckResultViewModelProfile>();
             });
         }
     }

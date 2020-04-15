@@ -3,7 +3,6 @@ using Brackets.Data;
 using Brackets.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BracketsUI.WebForms
 {
@@ -12,7 +11,7 @@ namespace BracketsUI.WebForms
         protected void Page_Load(object sender, EventArgs e)
         {
             var dtos = BracketsDataService.GetChecksHistoryList();
-            var viewModels = Mapper.Map<IEnumerable<CheckResultViewModel>, IEnumerable<LogDto>>(dtos);
+            var viewModels = Mapper.Map<IEnumerable<LogDto>, IEnumerable<CheckResultViewModel>>(dtos);
 
             ResultsHistoryList.DataSource = viewModels;
             ResultsHistoryList.DataBind();

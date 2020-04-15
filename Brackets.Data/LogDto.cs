@@ -4,9 +4,9 @@ namespace Brackets.Data
 {
     public class LogDto
     {
-        public int Id { get; set; }
+        public int LogID { get; set; }
 
-        public string Time { get; set; }
+        public DateTime Time { get; set; }
 
         public bool Result { get; set; }
     }

@@ -28,7 +28,7 @@ namespace BracketsUI.MVC.Controllers
         public ActionResult Results()
         {
             var dtos = BracketsDataService.GetChecksHistoryList();
-            var viewModels = Mapper.Map<IEnumerable<CheckResultViewModel>, IEnumerable<LogDto>>(dtos);
+            var viewModels = Mapper.Map<IEnumerable<LogDto>, IEnumerable<CheckResultViewModel>>(dtos);
 
             return View(viewModels);
         }

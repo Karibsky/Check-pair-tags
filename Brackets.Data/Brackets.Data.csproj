@@ -56,10 +56,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Brackets.ViewModels\Brackets.ViewModels.csproj">
-      <Project>{9BE2DB06-48C0-4284-8B87-1A12C397F36D}</Project>
-      <Name>Brackets.ViewModels</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SqlDatabase\SqlDatabase.csproj">
       <Project>{a8b52e71-461e-423b-9242-0cdfc6e432ba}</Project>
       <Name>SqlDatabase</Name>

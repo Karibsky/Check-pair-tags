@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Brackets.ViewModels;
 using SqlDatabase;
 using SqlDatabase.Models;
 
@@ -9,14 +8,14 @@ namespace Brackets.Data
 {
     public static class BracketsDataService
     {
-        public static IEnumerable<CheckResultViewModel> GetChecksHistoryList()
+        public static IEnumerable<LogDto> GetChecksHistoryList()
         {
             using (DatabaseContext db = new DatabaseContext())
             {
-                var viewModel = db.Logs.AsEnumerable().Select(x => new CheckResultViewModel
+                var viewModel = db.Logs.AsEnumerable().Select(x => new LogDto
                 {
-                    Id = x.LogID,
-                    Time = x.Time.ToShortDateString(),
+                    LogID = x.LogID,
+                    Time = x.Time,
                     Result = x.Result
                 });
 
