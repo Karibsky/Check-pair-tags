@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{15770413-6D1B-4455-A55D-29CCAA61A73B}</ProjectGuid>
+    <ProjectGuid>{40FAB5CF-269B-4493-B326-CB06B95D82FD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BracketsDataServiceProvider</RootNamespace>
-    <AssemblyName>BracketsDataServiceProvider</AssemblyName>
+    <RootNamespace>Brackets.Data</RootNamespace>
+    <AssemblyName>Brackets.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -52,18 +52,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BracketsDataService.cs" />
+    <Compile Include="LogDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\CheckResultViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Brackets.ViewModels\Brackets.ViewModels.csproj">
+      <Project>{9BE2DB06-48C0-4284-8B87-1A12C397F36D}</Project>
+      <Name>Brackets.ViewModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SqlDatabase\SqlDatabase.csproj">
       <Project>{a8b52e71-461e-423b-9242-0cdfc6e432ba}</Project>
       <Name>SqlDatabase</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

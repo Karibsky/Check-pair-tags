@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -166,9 +169,13 @@
       <Project>{7D019E2E-B7B3-4E11-96B9-678B614473D6}</Project>
       <Name>Brackets</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BracketsDataServiceProvider\BracketsDataServiceProvider.csproj">
-      <Project>{15770413-6d1b-4455-a55d-29ccaa61a73b}</Project>
-      <Name>BracketsDataServiceProvider</Name>
+    <ProjectReference Include="..\Brackets.Data\Brackets.Data.csproj">
+      <Project>{40fab5cf-269b-4493-b326-cb06b95d82fd}</Project>
+      <Name>Brackets.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brackets.ViewModels\Brackets.ViewModels.csproj">
+      <Project>{9BE2DB06-48C0-4284-8B87-1A12C397F36D}</Project>
+      <Name>Brackets.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

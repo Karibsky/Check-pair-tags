@@ -1,11 +1,11 @@
-﻿using Brackets;
-using SqlDatabase;
+﻿using AutoMapper;
+using Brackets;
+using Brackets.Data;
+using Brackets.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BracketsUI.MVC.Controllers
@@ -27,9 +27,10 @@ namespace BracketsUI.MVC.Controllers
         
         public ActionResult Results()
         {
-            var results = BracketsDataService.GetChecksHistoryList();
+            var dtos = BracketsDataService.GetChecksHistoryList();
+            var viewModels = Mapper.Map<IEnumerable<CheckResultViewModel>, IEnumerable<LogDto>>(dtos);
 
-            return View(results);
+            return View(viewModels);
         }
 
         private string GetCheckResult(string text)

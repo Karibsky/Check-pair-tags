@@ -85,9 +85,9 @@
     <Content Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="BracketsDataServiceProvider\BracketsDataServiceProvider.csproj">
-      <Project>{15770413-6d1b-4455-a55d-29ccaa61a73b}</Project>
-      <Name>BracketsDataServiceProvider</Name>
+    <ProjectReference Include="Brackets.Data\Brackets.Data.csproj">
+      <Project>{40fab5cf-269b-4493-b326-cb06b95d82fd}</Project>
+      <Name>Brackets.Data</Name>
     </ProjectReference>
     <ProjectReference Include="SqlDatabase\SqlDatabase.csproj">
       <Project>{a8b52e71-461e-423b-9242-0cdfc6e432ba}</Project>

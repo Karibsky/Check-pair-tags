@@ -1,6 +1,8 @@
-﻿namespace BracketsDataServiceProvider
+﻿using System;
+
+namespace Brackets.Data
 {
-    public class CheckResultViewModel
+    public class LogDto
     {
         public int Id { get; set; }
 

@@ -1,5 +1,9 @@
-﻿using SqlDatabase;
+﻿using AutoMapper;
+using Brackets.Data;
+using Brackets.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BracketsUI.WebForms
 {
@@ -7,7 +11,10 @@ namespace BracketsUI.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ResultsHistoryList.DataSource = BracketsDataService.GetChecksHistoryList();
+            var dtos = BracketsDataService.GetChecksHistoryList();
+            var viewModels = Mapper.Map<IEnumerable<CheckResultViewModel>, IEnumerable<LogDto>>(dtos);
+
+            ResultsHistoryList.DataSource = viewModels;
             ResultsHistoryList.DataBind();
         }
     }

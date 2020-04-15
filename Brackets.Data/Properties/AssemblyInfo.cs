@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BracketsDataServiceProvider")]
+[assembly: AssemblyTitle("Brackets.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BracketsDataServiceProvider")]
+[assembly: AssemblyProduct("Brackets.Data")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("15770413-6d1b-4455-a55d-29ccaa61a73b")]
+[assembly: Guid("40fab5cf-269b-4493-b326-cb06b95d82fd")]
 
 // Version information for an assembly consists of the following four values:
 //

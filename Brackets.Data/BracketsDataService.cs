@@ -1,10 +1,11 @@
-﻿using BracketsDataServiceProvider;
-using SqlDatabase.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Brackets.ViewModels;
+using SqlDatabase;
+using SqlDatabase.Models;
 
-namespace SqlDatabase
+namespace Brackets.Data
 {
     public static class BracketsDataService
     {
